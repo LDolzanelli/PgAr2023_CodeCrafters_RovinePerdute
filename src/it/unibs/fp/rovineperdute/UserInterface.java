@@ -18,7 +18,7 @@ public class UserInterface {
             System.out.println(PrettyStrings.frame(WELCOME, 30, true, true));
             System.out.println("Generating all the maps");
 
-            //TODO: GENERATE ALL THE MAPS
+            //TODO: GENERATE ALL THE MAPS 
             System.out.println("...");
             System.out.println("...");
             System.out.println("Press Enter to Continue");

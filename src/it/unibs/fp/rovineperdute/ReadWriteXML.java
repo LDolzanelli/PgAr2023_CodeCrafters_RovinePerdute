@@ -1,10 +1,7 @@
 package it.unibs.fp.rovineperdute;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileReader;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 import javax.xml.stream.XMLInputFactory;
@@ -44,8 +41,8 @@ public class ReadWriteXML {
                             h = xmlr.getAttributeValue(null, "h");
 
                             cities.add(new City(name,
-                                    new Coordinates(Integer.parseInt(x), Integer.parseInt(y), Integer.parseInt(h)),
-                                    Integer.parseInt(id)));
+                                new Coordinates(Integer.parseInt(x), Integer.parseInt(y), Integer.parseInt(h)),
+                                Integer.parseInt(id)));
                         } else if (elementName.equals("link")) {
 
                             String link = xmlr.getAttributeValue(null, "to");
