@@ -5,6 +5,13 @@ public class City {
     private Coordinates coordinates;
     private int idNumber;
 
+    
+    public City(String name, Coordinates coordinates, int idNumber) {
+        this.name = name;
+        this.coordinates = coordinates;
+        this.idNumber = idNumber;
+    }
+
     public String getName() {
         return name;
     }
