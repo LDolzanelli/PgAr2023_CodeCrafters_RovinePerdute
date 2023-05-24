@@ -19,11 +19,12 @@ public class UserInterface {
             System.out.println(PrettyStrings.frame(WELCOME, 30, true, true));
             System.out.println("Generating all the maps");
 
-            //GENERATE ALL THE MAPS
+            //TODO: GENERATE ALL THE MAPS
             System.out.println("...");
             System.out.println("...");
             System.out.println("Press Enter to Continue");
         } while (!scanner.nextLine().isEmpty());
+        scanner.close();
     }
     public static void visualizationMenu() {
         Menu menu = new Menu(VIEW_PATHS, VISUALIZATION_MENU_VOICES, false, true, true);
