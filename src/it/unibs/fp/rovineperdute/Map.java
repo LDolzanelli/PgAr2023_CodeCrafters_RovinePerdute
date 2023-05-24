@@ -17,6 +17,8 @@ public class Map {
 
         matrixMetztli.copyLinksBetweenCities(matrixLinks);
         matrixTonatiuh.copyLinksBetweenCities(matrixLinks);
+        matrixMetztli.assignWeightToLinks(cities);
+        matrixTonatiuh.assignWeightToLinks(cities);
     }
 
     public ArrayList<City> getCities() {
