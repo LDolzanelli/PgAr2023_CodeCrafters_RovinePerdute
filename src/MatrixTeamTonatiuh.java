@@ -11,6 +11,8 @@ public class MatrixTeamTonatiuh extends AdjacencyMatrix {
         double weightY = Math.pow(cityA.getCoordinates().getY() - cityB.getCoordinates().getY(), 2);
 
         return Math.sqrt(weightX + weightY);
+
+
     }
 
 }

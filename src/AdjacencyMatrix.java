@@ -1,10 +1,8 @@
 import java.util.ArrayList;
 public abstract class AdjacencyMatrix {
-    private int size;
     private double[][] matrix;
 
     public AdjacencyMatrix(int size) {
-        this.size = size;
         matrix = new double[size][size];
     }
 
@@ -23,8 +21,4 @@ public abstract class AdjacencyMatrix {
             }
         }
     }
-
-
-
-
 }

@@ -4,16 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0031b0de-f399-4895-8e27-52b7bba6c2dc" name="Changes" comment="First commit">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/AdjacencyMatrix.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/City.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Coordinates.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/LostRuinsMain.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MatrixTeamMetztli.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MatrixTeamTonatiuh.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RovinePerduteMain.java" beforeDir="false" />
+    <list default="true" id="0031b0de-f399-4895-8e27-52b7bba6c2dc" name="Changes" comment="First classes">
+      <change beforePath="$PROJECT_DIR$/src/AdjacencyMatrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdjacencyMatrix.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/City.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/City.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MatrixTeamTonatiuh.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MatrixTeamTonatiuh.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,11 +44,12 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/loren/OneDrive/Desktop/kibofplib-1.0.jar",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Modules",
+    "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "preferences.lookFeel",
@@ -70,7 +65,7 @@
       <option name="presentableId" value="Default" />
       <updated>1684914582358</updated>
       <workItem from="1684914583632" duration="6667000" />
-      <workItem from="1684921517419" duration="1574000" />
+      <workItem from="1684921517419" duration="2013000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <created>1684917180293</created>
@@ -79,7 +74,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684917180293</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="First classes">
+      <created>1684923288056</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1684923288056</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -88,6 +90,7 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="First commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="First commit" />
+    <MESSAGE value="First classes" />
+    <option name="LAST_COMMIT_MESSAGE" value="First classes" />
   </component>
 </project>

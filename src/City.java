@@ -1,7 +1,3 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
-
 public class City {
     private String name;
     private Coordinates coordinates;
