@@ -13,9 +13,8 @@ public class UserInterface {
     private static final String[] MAP_CHOICES = {"Map 1", "Map 2", "Map 3", "Map 4", "Map 5", "Exit"};
 
 
-    public static void mapGenerationUI() {
-        Scanner scanner = new Scanner(System.in);
-        do {
+    public static void mapGenerationUI(Scanner scanner) {
+                do {
             System.out.println(PrettyStrings.frame(WELCOME, 30, true, true));
             System.out.println("Generating all the maps");
 
@@ -24,7 +23,6 @@ public class UserInterface {
             System.out.println("...");
             System.out.println("Press Enter to Continue");
         } while (!scanner.nextLine().isEmpty());
-        scanner.close();
     }
     public static void visualizationMenu() {
         Menu menu = new Menu(VIEW_PATHS, VISUALIZATION_MENU_VOICES, false, true, true);
