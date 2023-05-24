@@ -34,12 +34,16 @@ public class LostRuinsMain {
         File map5File = new File("inputFiles/PgAr_Map_2000.xml");
         File map6File = new File("inputFiles/PgAr_Map_10000.xml");
 
+    
         map1 = generateMap(map1File, 5);
-        map2 = generateMap(map2File, 12);
+        map2 = generateMap(map2File, 13);
         map3 = generateMap(map3File, 50);
         map4 = generateMap(map4File, 200);
         map5 = generateMap(map5File, 2000);
         map6 = generateMap(map6File, 10000);
+
+
+        
 
     }
 
