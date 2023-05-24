@@ -3,16 +3,12 @@ package it.unibs.fp.rovineperdute;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 import javax.xml.stream.XMLInputFactory;
-import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamReader;
-import javax.xml.stream.XMLStreamWriter;
 
 public class ReadWriteXML {
 
@@ -22,8 +18,10 @@ public class ReadWriteXML {
         XMLStreamReader xmlr = null;
 
         try {
-            xmlr = xmlif.createXMLStreamReader(new BufferedReader(new InputStreamReader(new FileInputStream(file), "UTF-8")));;
-            
+            xmlr = xmlif.createXMLStreamReader(
+                    new BufferedReader(new InputStreamReader(new FileInputStream(file), "UTF-8")));
+            ;
+
             String id = null;
             String name = null;
             String x = null;
@@ -33,7 +31,6 @@ public class ReadWriteXML {
             while (xmlr.hasNext()) {
 
                 int event = xmlr.nextTag();
-
                 switch (event) {
                     case XMLStreamConstants.START_ELEMENT:
                         String elementName = xmlr.getLocalName();
@@ -56,7 +53,9 @@ public class ReadWriteXML {
                         break;
 
                     case XMLStreamConstants.END_ELEMENT:
+                        break;
 
+                    case XMLStreamConstants.END_DOCUMENT:
                         break;
                 }
             }

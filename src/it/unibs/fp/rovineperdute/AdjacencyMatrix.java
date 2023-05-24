@@ -12,6 +12,11 @@ public abstract class AdjacencyMatrix {
         matrix[idCurrentCity][idLinkedCity] = 1;
     }
 
+    public void copyLinksBetweenCities(double matrix[][])
+    {
+        this.matrix = matrix;
+    }
+
     abstract double calculateWeight(City cityA, City cityB);
 
     public void assignWeightToLinks(ArrayList<City> cities) {
@@ -22,5 +27,9 @@ public abstract class AdjacencyMatrix {
                 }
             }
         }
+    }
+
+    public double[][] getMatrix() {
+        return matrix;
     }
 }

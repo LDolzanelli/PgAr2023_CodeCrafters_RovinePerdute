@@ -6,6 +6,8 @@ public class MatrixTeamMetztli extends AdjacencyMatrix {
         super(size);
     }
 
+
+    @Override
     public double calculateWeight(City cityA, City cityB) {
         return Math.abs(cityA.getCoordinates().getH() - cityB.getCoordinates().getH());
     }
