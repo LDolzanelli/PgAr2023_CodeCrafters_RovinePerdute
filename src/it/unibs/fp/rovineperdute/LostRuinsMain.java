@@ -1,3 +1,5 @@
+package it.unibs.fp.rovineperdute;
+
 import java.util.ArrayList;
 
 public class LostRuinsMain {

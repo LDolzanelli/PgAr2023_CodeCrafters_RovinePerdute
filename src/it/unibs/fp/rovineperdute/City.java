@@ -1,3 +1,5 @@
+package it.unibs.fp.rovineperdute;
+
 public class City {
     private String name;
     private Coordinates coordinates;
