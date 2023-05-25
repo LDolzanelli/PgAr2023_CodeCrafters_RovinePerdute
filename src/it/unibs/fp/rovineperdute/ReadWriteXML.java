@@ -8,7 +8,6 @@ import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamReader;
 
-
 public class ReadWriteXML {
 
     public static ArrayList<City> readCitiesFile(File file, AdjacencyMatrix matrix) {
@@ -17,13 +16,14 @@ public class ReadWriteXML {
         XMLStreamReader xmlr = null;
 
         try {
+
             xmlr = xmlif.createXMLStreamReader(new FileReader(file));
 
-            String id = null;
             String name = null;
-            String x = null;
-            String y = null;
-            String h = null;
+            int id = 0;
+            int x;
+            int y;
+            int h;
 
             while (xmlr.hasNext()) {
 
@@ -31,23 +31,33 @@ public class ReadWriteXML {
 
                 switch (event) {
                     case XMLStreamConstants.START_ELEMENT:
+
                         String elementName = xmlr.getLocalName();
 
-                        if (elementName.equals("city")) {
-                            id = xmlr.getAttributeValue(null, "id");
-                            name = xmlr.getAttributeValue(null, "name");
-                            x = xmlr.getAttributeValue(null, "x");
-                            y = xmlr.getAttributeValue(null, "y");
-                            h = xmlr.getAttributeValue(null, "h");
+                        switch (elementName) {
 
-                            cities.add(new City(name,
-                                new Coordinates(Integer.parseInt(x), Integer.parseInt(y), Integer.parseInt(h)),
-                                Integer.parseInt(id)));
-                        } else if (elementName.equals("link")) {
+                            case "city":
 
-                            String link = xmlr.getAttributeValue(null, "to");
-                            matrix.assignLinksBetweenCities(Integer.parseInt(id), Integer.parseInt(link));
+                                name = xmlr.getAttributeValue(null, "name");
+
+                                id = Integer.parseInt(xmlr.getAttributeValue(null, "id"));
+                                x = Integer.parseInt(xmlr.getAttributeValue(null, "x"));
+                                y = Integer.parseInt(xmlr.getAttributeValue(null, "y"));
+                                h = Integer.parseInt(xmlr.getAttributeValue(null, "h"));
+
+                                cities.add(new City(name, new Coordinates(x, y, h), id));
+
+                                break;
+
+                            case "link":
+
+                                int link = Integer.parseInt(xmlr.getAttributeValue(null, "to"));
+                                matrix.assignLinksBetweenCities(id, link);
+
+                                break;
+
                         }
+
                         break;
 
                     case XMLStreamConstants.END_ELEMENT:
@@ -59,7 +69,7 @@ public class ReadWriteXML {
                     default:
                         break;
 
-                    }
+                }
             }
 
         } catch (Exception e) {
