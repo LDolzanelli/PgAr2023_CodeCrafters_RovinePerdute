@@ -2,17 +2,17 @@ package it.unibs.fp.rovineperdute;
 
 import java.util.ArrayList;
 public abstract class AdjacencyMatrix {
-    private double[][] matrix;
+    private float[][] matrix;
 
     public AdjacencyMatrix(int size) {
-        matrix = new double[size][size];
+        matrix = new float[size][size];
     }
 
     public void assignLinksBetweenCities(int idCurrentCity, int idLinkedCity) {
         matrix[idCurrentCity][idLinkedCity] = 1;
     }
 
-    public void copyLinksBetweenCities(double matrix[][])
+    public void copyLinksBetweenCities(float matrix[][])
     {
         for (int i = 0; i < matrix.length; i++)
         {
@@ -23,7 +23,7 @@ public abstract class AdjacencyMatrix {
         }
     }
 
-    abstract double calculateWeight(City cityA, City cityB);
+    abstract float calculateWeight(City cityA, City cityB);
 
     public void assignWeightToLinks(ArrayList<City> cities) {
         for (int i = 0; i < matrix.length; i++) {
@@ -35,7 +35,7 @@ public abstract class AdjacencyMatrix {
         }
     }
 
-    public double[][] getMatrix() {
+    public float[][] getMatrix() {
         return matrix;
     }
 }

@@ -8,7 +8,7 @@ public class Map {
     private MatrixTeamMetztli matrixMetztli;
     private MatrixTeamTonatiuh matrixTonatiuh;
 
-    public Map(ArrayList<City> cities, double matrixLinks[][])
+    public Map(ArrayList<City> cities, float matrixLinks[][])
     {
         this.cities = cities;
 
@@ -33,6 +33,7 @@ public class Map {
     public MatrixTeamTonatiuh getMatrixTonatiuh() {
         return matrixTonatiuh;
     }
+
 
     
     

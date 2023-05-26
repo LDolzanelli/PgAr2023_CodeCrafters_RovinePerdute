@@ -53,6 +53,7 @@ public class ReadWriteXML {
 
                                 int link = Integer.parseInt(xmlr.getAttributeValue(null, "to"));
                                 matrix.assignLinksBetweenCities(id, link);
+                                cities.get(id).getLinkedCitiesID().add(link);
 
                                 break;
 
