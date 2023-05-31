@@ -3,26 +3,25 @@ package it.unibs.fp.rovineperdute;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+
 public class PathAlgorithm {
 
-    public PathAlgorithm() {
+    public static final int SOURCE = 0;
 
-    }
-
-    public static ArrayList<Integer> findShortestPath(int vertices, float[][] graph, int source, int target) {
-        float[] distance = new float[vertices];
-        int[] previous = new int[vertices];
-        boolean[] visited = new boolean[vertices];
+    public static ArrayList<Integer> findShortestPath(int size, float[][] graph) {
+        float[] distance = new float[size];
+        int[] previous = new int[size];
+        boolean[] visited = new boolean[size];
         ArrayList<Integer> path = new ArrayList<Integer>();
 
         Arrays.fill(distance, Float.MAX_VALUE);
-        distance[source] = 0;
+        distance[SOURCE] = 0;
 
-        for (int i = 0; i < vertices - 1; i++) {
-            int minVertex = findMinDistanceVertex(distance, visited, vertices);
+        for (int i = 0; i < size - 1; i++) {
+            int minVertex = findMinDistanceVertex(distance, visited, size);
             visited[minVertex] = true;
 
-            for (int j = 0; j < vertices; j++) {
+            for (int j = 0; j < size; j++) {
                 if (!visited[j] && graph[minVertex][j] != 0 && distance[minVertex] != Float.MAX_VALUE) {
                     float newDistance = distance[minVertex] + graph[minVertex][j];
                     if (newDistance < distance[j]) {
@@ -44,11 +43,11 @@ public class PathAlgorithm {
         return path;
     }
 
-    private static int findMinDistanceVertex(float[] distance, boolean[] visited, int vertices) {
+    private static int findMinDistanceVertex(float[] distance, boolean[] visited, int size) {
         float minDistance = Float.MAX_VALUE;
         int minVertex = -1;
 
-        for (int i = 0; i < vertices; i++) {
+        for (int i = 0; i < size; i++) {
             if (!visited[i] && distance[i] < minDistance) {
                 minDistance = distance[i];
                 minVertex = i;
