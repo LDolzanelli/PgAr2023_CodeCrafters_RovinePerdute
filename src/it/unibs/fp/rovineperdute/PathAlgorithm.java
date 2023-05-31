@@ -8,53 +8,53 @@ public class PathAlgorithm {
 
     public static final int SOURCE = 0;
 
-    public static ArrayList<Integer> findShortestPath(int size, float[][] graph) {
+    public static ArrayList<Integer> findShortestPath(int size, float[][] matrix) {
         float[] distance = new float[size];
-        int[] previous = new int[size];
-        boolean[] visited = new boolean[size];
-        ArrayList<Integer> path = new ArrayList<Integer>();
+        int[] previousCities = new int[size];
+        boolean[] visitedCities = new boolean[size];
+        ArrayList<Integer> shortestPath = new ArrayList<Integer>();
 
+        //Initializes the array to the max values for the algorithm to find the initial minimum values
         Arrays.fill(distance, Float.MAX_VALUE);
         distance[SOURCE] = 0;
 
         for (int i = 0; i < size - 1; i++) {
-            int minVertex = findMinDistanceVertex(distance, visited, size);
-            visited[minVertex] = true;
+            int minNode = findMinDistanceNode(distance, visitedCities, size);
+            visitedCities[minNode] = true;
 
             for (int j = 0; j < size; j++) {
-                if (!visited[j] && graph[minVertex][j] != 0 && distance[minVertex] != Float.MAX_VALUE) {
-                    float newDistance = distance[minVertex] + graph[minVertex][j];
+                if (!visitedCities[j] && matrix[minNode][j] != 0 && distance[minNode] != Float.MAX_VALUE) {
+                    float newDistance = distance[minNode] + matrix[minNode][j];
                     if (newDistance < distance[j]) {
                         distance[j] = newDistance;
-                        previous[j] = minVertex;
+                        previousCities[j] = minNode;
                     }
                 }
             }
         }
 
-        int currentCityId = graph.length - 1;
-        path.add(currentCityId);
+        int currentCityId = matrix.length - 1;
+        shortestPath.add(currentCityId);
 
-        while (path.get(0) != 0) {
-            path.add(0, previous[currentCityId]);
-            currentCityId = previous[currentCityId];
+        while (shortestPath.get(0) != 0) {
+            shortestPath.add(0, previousCities[currentCityId]);
+            currentCityId = previousCities[currentCityId];
         }
 
-        return path;
+        return shortestPath;
     }
 
-    private static int findMinDistanceVertex(float[] distance, boolean[] visited, int size) {
+    private static int findMinDistanceNode(float[] distance, boolean[] visited, int size) {
         float minDistance = Float.MAX_VALUE;
-        int minVertex = -1;
+        int minNode = -1;
 
         for (int i = 0; i < size; i++) {
             if (!visited[i] && distance[i] < minDistance) {
                 minDistance = distance[i];
-                minVertex = i;
+                minNode = i;
             }
         }
 
-        return minVertex;
-    
+        return minNode;
     }
 }
