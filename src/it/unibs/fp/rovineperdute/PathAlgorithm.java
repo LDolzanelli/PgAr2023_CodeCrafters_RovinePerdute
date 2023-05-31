@@ -62,32 +62,34 @@ public class PathAlgorithm {
 
     public static Stack<Integer> calculatePathDijkstraMetztli(Map map) {
         Stack<Integer> pathDijkstra = new Stack<Integer>();
-        
-        ArrayList<City> vistedCities = new ArrayList<City>();
+
+        ArrayList<City> visitedCities = new ArrayList<City>();
+        ArrayList<City> unvisitedCities = new ArrayList<City>();
 
         ArrayList<Float> shortestDistance = new ArrayList<Float>();
         int[] previousCityId = new int[map.getCities().size()];
 
         shortestDistance.add((float) 0);
 
+        unvisitedCities.addAll(map.getCities());
         for (int i = 1; i < map.getCities().size(); i++) {
             shortestDistance.add(Float.MAX_VALUE);
         }
 
         int currentCityId = map.getCities().get(0).getIdNumber();
 
-        while (vistedCities.size() != map.getCities().size()) {
+        while (visitedCities.size() != map.getCities().size() && currentCityId != map.getCities().size() - 1) {
             ArrayList<Integer> linkedCities = map.getCities().get(currentCityId).getLinkedCitiesID();
             for (int i = 0; i < linkedCities.size(); i++) {
-                if (map.getMatrixMetztli().getMatrix()[currentCityId][linkedCities.get(i)] < shortestDistance.get(linkedCities.get(i))) {
+                if (map.getMatrixMetztli().getMatrix()[currentCityId][linkedCities.get(i)] < shortestDistance
+                        .get(linkedCities.get(i))) {
 
-                    if (shortestDistance.get(linkedCities.get(i)) == Float.MAX_VALUE)
-                    {
-                        shortestDistance.set(linkedCities.get(i), map.getMatrixMetztli().getMatrix()[currentCityId][linkedCities.get(i)]);
-                    }
-                    else
-                    {
-                        shortestDistance.set(linkedCities.get(i),shortestDistance.get(linkedCities.get(i)) + map.getMatrixMetztli().getMatrix()[currentCityId][linkedCities.get(i)]);
+                    if (shortestDistance.get(linkedCities.get(i)) == Float.MAX_VALUE) {
+                        shortestDistance.set(linkedCities.get(i),
+                                map.getMatrixMetztli().getMatrix()[currentCityId][linkedCities.get(i)]);
+                    } else {
+                        shortestDistance.set(linkedCities.get(i), shortestDistance.get(linkedCities.get(i))
+                                + map.getMatrixMetztli().getMatrix()[currentCityId][linkedCities.get(i)]);
                     }
                     previousCityId[linkedCities.get(i)] = currentCityId;
                 }
@@ -96,33 +98,41 @@ public class PathAlgorithm {
 
             float minCurrentDistance = Float.MAX_VALUE;
 
-            vistedCities.add(map.getCities().get(currentCityId));
+            if (!visitedCities.contains(map.getCities().get(currentCityId))) {
+                visitedCities.add(map.getCities().get(currentCityId));
+            }
 
+            unvisitedCities.remove(map.getCities().get(currentCityId));
+
+            int counter = 0;
 
             for (int i = 0; i < linkedCities.size(); i++) {
 
-                
-                if (shortestDistance.get(linkedCities.get(i)) < minCurrentDistance && !vistedCities.contains(map.getCities().get(linkedCities.get(i)))) {
+                if (shortestDistance.get(linkedCities.get(i)) < minCurrentDistance
+                        && !visitedCities.contains(map.getCities().get(linkedCities.get(i)))) {
                     minCurrentDistance = shortestDistance.get(linkedCities.get(i));
                     currentCityId = linkedCities.get(i);
+                    counter++;
                 }
+
+            }
+            int c = 3;
+            if (counter == 0 && unvisitedCities.size() != 0 && currentCityId != map.getCities().size() - 1) {
+                currentCityId = previousCityId[currentCityId];
             }
 
-            
         }
 
-        //Last city id is always the last element in the array of cities
+        // Last city id is always the last element in the array of cities
         currentCityId = map.getCities().size() - 1;
 
         pathDijkstra.push(currentCityId);
 
-        //first city id is always the first element in the array of cities
-        while (currentCityId != 0)
-        {
+        // first city id is always the first element in the array of cities
+        while (currentCityId != 0) {
             pathDijkstra.push(previousCityId[currentCityId]);
             currentCityId = previousCityId[currentCityId];
         }
-
 
         return pathDijkstra;
     }
