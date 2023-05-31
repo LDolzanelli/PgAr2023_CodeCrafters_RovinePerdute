@@ -6,125 +6,82 @@ import java.util.Stack;
 
 import javax.lang.model.util.ElementScanner14;
 
-public class PathAlgorithm {
-    public static float calculateHeuristic(City currentCity, City lostRuins) {
-        double weightX = Math.pow(currentCity.getCoordinates().getX() - lostRuins.getCoordinates().getX(), 2);
-        double weightY = Math.pow(currentCity.getCoordinates().getY() - lostRuins.getCoordinates().getY(), 2);
+import java.util.Arrays;
 
-        return (float) Math.sqrt(weightX + weightY);
+import java.util.Arrays;
+
+class DijkstraAlgorithm {
+    private int vertices;
+    private float[][] graph;
+
+    public DijkstraAlgorithm(int vertices, float[][] graph) {
+        this.vertices = vertices;
+        this.graph = graph;
     }
 
-    public static int getClosestCityID(float[][] matrix, int currentCityID, ArrayList<City> cities,
-            ArrayList<Integer> visitedCitiesID) {
-        int minValue = Integer.MAX_VALUE;
-        int closestCityId = 0;
+    public void findShortestPath(int source, int target) {
+        float[] distance = new float[vertices];
+        int[] previous = new int[vertices];
+        boolean[] visited = new boolean[vertices];
 
-        for (int i = 0; i < cities.get(currentCityID).getLinkedCitiesID().size(); i++) {
-            int linkedCityID = cities.get(currentCityID).getLinkedCitiesID().get(i);
-            float calculatedValue = matrix[currentCityID][linkedCityID]
-                    + calculateHeuristic(cities.get(linkedCityID), cities.get(cities.size() - 1));
-            if (calculatedValue < minValue && (!visitedCitiesID.contains(cities.get(linkedCityID).getIdNumber()))) {
-                minValue = (int) calculatedValue;
-                closestCityId = linkedCityID;
-            }
+        Arrays.fill(distance, Float.MAX_VALUE);
+        distance[source] = 0;
 
-        }
-        return closestCityId;
-    }
+        for (int i = 0; i < vertices - 1; i++) {
+            int minVertex = findMinDistanceVertex(distance, visited);
+            visited[minVertex] = true;
 
-    public static ArrayList<Integer> calculatePathMetztli(Map map) {
-
-        ArrayList<Integer> visitedCitiesID = new ArrayList<>();
-        int lostRuinsID = map.getCities().get(map.getCities().size() - 1).getIdNumber();
-        int lastVisitedCityId = 0;
-        visitedCitiesID.add(map.getCities().get(0).getIdNumber());
-        while (lastVisitedCityId != lostRuinsID) {
-            visitedCitiesID.add(getClosestCityID(map.getMatrixMetztli().getMatrix(), lastVisitedCityId, map.getCities(),
-                    visitedCitiesID));
-            lastVisitedCityId = visitedCitiesID.get(visitedCitiesID.size() - 1);
-        }
-        return visitedCitiesID;
-    }
-
-    public static ArrayList<Integer> calculatePathTonatiuh(Map map) {
-        ArrayList<Integer> visitedCitiesID = new ArrayList<>();
-        int lostRuinsID = map.getCities().get(map.getCities().size() - 1).getIdNumber();
-        int lastVisitedCityId = 0;
-        visitedCitiesID.add(map.getCities().get(0).getIdNumber());
-        while (lastVisitedCityId != lostRuinsID) {
-            visitedCitiesID.add(getClosestCityID(map.getMatrixTonatiuh().getMatrix(), lastVisitedCityId,
-                    map.getCities(), visitedCitiesID));
-            lastVisitedCityId = visitedCitiesID.get(visitedCitiesID.size() - 1);
-        }
-
-        return visitedCitiesID;
-    }
-
-    public static Stack<Integer> calculatePathDijkstraMetztli(Map map) {
-        Stack<Integer> pathDijkstra = new Stack<Integer>();
-        
-        ArrayList<City> vistedCities = new ArrayList<City>();
-
-        ArrayList<Float> shortestDistance = new ArrayList<Float>();
-        int[] previousCityId = new int[map.getCities().size()];
-
-        shortestDistance.add((float) 0);
-
-        for (int i = 1; i < map.getCities().size(); i++) {
-            shortestDistance.add(Float.MAX_VALUE);
-        }
-
-        int currentCityId = map.getCities().get(0).getIdNumber();
-
-        while (vistedCities.size() != map.getCities().size()) {
-            ArrayList<Integer> linkedCities = map.getCities().get(currentCityId).getLinkedCitiesID();
-            for (int i = 0; i < linkedCities.size(); i++) {
-                if (map.getMatrixMetztli().getMatrix()[currentCityId][linkedCities.get(i)] < shortestDistance.get(linkedCities.get(i))) {
-
-                    if (shortestDistance.get(linkedCities.get(i)) == Float.MAX_VALUE)
-                    {
-                        shortestDistance.set(linkedCities.get(i), map.getMatrixMetztli().getMatrix()[currentCityId][linkedCities.get(i)]);
+            for (int j = 0; j < vertices; j++) {
+                if (!visited[j] && graph[minVertex][j] != 0 && distance[minVertex] != Float.MAX_VALUE) {
+                    float newDistance = distance[minVertex] + graph[minVertex][j];
+                    if (newDistance < distance[j]) {
+                        distance[j] = newDistance;
+                        previous[j] = minVertex;
                     }
-                    else
-                    {
-                        shortestDistance.set(linkedCities.get(i),shortestDistance.get(linkedCities.get(i)) + map.getMatrixMetztli().getMatrix()[currentCityId][linkedCities.get(i)]);
-                    }
-                    previousCityId[linkedCities.get(i)] = currentCityId;
-                }
-
-            }
-
-            float minCurrentDistance = Float.MAX_VALUE;
-
-            vistedCities.add(map.getCities().get(currentCityId));
-
-
-            for (int i = 0; i < linkedCities.size(); i++) {
-
-                
-                if (shortestDistance.get(linkedCities.get(i)) < minCurrentDistance && !vistedCities.contains(map.getCities().get(linkedCities.get(i)))) {
-                    minCurrentDistance = shortestDistance.get(linkedCities.get(i));
-                    currentCityId = linkedCities.get(i);
                 }
             }
-
-            
         }
 
-        //Last city id is always the last element in the array of cities
-        currentCityId = map.getCities().size() - 1;
+        printShortestPath(distance, previous, target);
+    }
 
-        pathDijkstra.push(currentCityId);
 
-        //first city id is always the first element in the array of cities
-        while (currentCityId != 0)
-        {
-            pathDijkstra.push(previousCityId[currentCityId]);
-            currentCityId = previousCityId[currentCityId];
+    private int findMinDistanceVertex(float[] distance, boolean[] visited) {
+        float minDistance = Float.MAX_VALUE;
+        int minVertex = -1;
+
+        for (int i = 0; i < vertices; i++) {
+            if (!visited[i] && distance[i] < minDistance) {
+                minDistance = distance[i];
+                minVertex = i;
+            }
         }
 
+        return minVertex;
+    }
 
-        return pathDijkstra;
+    private void printShortestPath(float[] distance, int[] previous, int target) {
+        System.out.println("Vertex\tDistance from Source\tPath");
+
+        for (int i = 0; i < vertices; i++) {
+            System.out.print(i + "\t\t" + distance[i] + "\t\t");
+            printPath(previous, i);
+            System.out.println();
+        }
+
+        System.out.print("Shortest Path from 0 to " + target + ": ");
+        printPath(previous, target);
+        System.out.println();
+    }
+
+    private void printPath(int[] previous, int vertex) {
+        if (vertex == 0) {
+            System.out.print("0");
+            return;
+        }
+
+        printPath(previous, previous[vertex]);
+        System.out.print(" -> " + vertex);
     }
 
 }

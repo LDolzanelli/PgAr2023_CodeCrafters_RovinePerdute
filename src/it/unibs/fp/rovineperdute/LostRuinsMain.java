@@ -47,12 +47,13 @@ public class LostRuinsMain {
          */
         // map6 = generateMap(map6File, 10000);
 
-        Stack<Integer> pathMap2;
-        pathMap2 = PathAlgorithm.calculatePathDijkstraMetztli(map3);
+        DijkstraAlgorithm dijkstra = new DijkstraAlgorithm(50, map3.getMatrixMetztli().getMatrix());
 
-        while (!pathMap2.isEmpty()) {
-            System.out.println(pathMap2.pop());
-        }
+        int source = 0;
+        int target = 50 - 1;
+        dijkstra.findShortestPath(source, target);
+
+    
 
         /*
          * for (int i = 0; i < map1.getMatrixMetztli().getMatrix().length; i++) {
