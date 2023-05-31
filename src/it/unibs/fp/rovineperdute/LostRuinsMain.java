@@ -40,20 +40,22 @@ public class LostRuinsMain {
 
         // map2 = generateMap(map2File, 13);
 
-        map3 = generateMap(map3File, 50);
+        // map3 = generateMap(map3File, 50);
         /*
          * map4 = generateMap(map4File, 200);
          * map5 = generateMap(map5File, 2000);
          */
-        // map6 = generateMap(map6File, 10000);
+        map6 = generateMap(map6File, 10000);
 
-        PathAlgorithm pathAlgorithm = new PathAlgorithm(50, map3.getMatrixMetztli().getMatrix());
+        ArrayList<Integer> path = new ArrayList<Integer>();
 
         int source = 0;
-        int target = 50 - 1;
-        pathAlgorithm.findShortestPath(source, target);
+        int target = 10000 - 1;
+        path = PathAlgorithm.findShortestPath(10000, map6.getMatrixMetztli().getMatrix(), source, target);
 
-    
+        for (int i = 0; i < path.size(); i++) {
+            System.out.printf("%s -> ", map6.getCities().get(path.get(i)).getName());
+        }
 
         /*
          * for (int i = 0; i < map1.getMatrixMetztli().getMatrix().length; i++) {
