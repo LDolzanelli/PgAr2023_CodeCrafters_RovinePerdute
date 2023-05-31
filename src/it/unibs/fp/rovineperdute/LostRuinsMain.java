@@ -47,11 +47,11 @@ public class LostRuinsMain {
          */
         // map6 = generateMap(map6File, 10000);
 
-        DijkstraAlgorithm dijkstra = new DijkstraAlgorithm(50, map3.getMatrixMetztli().getMatrix());
+        PathAlgorithm pathAlgorithm = new PathAlgorithm(50, map3.getMatrixMetztli().getMatrix());
 
         int source = 0;
         int target = 50 - 1;
-        dijkstra.findShortestPath(source, target);
+        pathAlgorithm.findShortestPath(source, target);
 
     
 
