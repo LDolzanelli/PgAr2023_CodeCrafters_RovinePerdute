@@ -5,13 +5,7 @@ import java.util.ArrayList;
 
 public class MapGenerator {
 
-    private Map[] maps;
-    
-    public MapGenerator() {
-        this.maps = generateMaps();
-    }
-
-    public Map[] generateMaps() {
+    public static Map[] generateMaps() {
         Map[] maps = new Map[6];
         int[] mapSizes = {5, 13, 50, 200, 2000, 10000};
 
@@ -31,7 +25,7 @@ public class MapGenerator {
         return maps;
     }
 
-    public Map generateMap(File mapFile, int size) {
+    public static Map generateMap(File mapFile, int size) {
 
         ArrayList<City> cities = new ArrayList<>();
         AdjacencyMatrix matrix = new MatrixTeamMetztli(size);
@@ -41,10 +35,6 @@ public class MapGenerator {
         Map map = new Map(cities, matrix.getMatrix());
 
         return map;
-    }
-
-    public Map[] getMapList() {
-        return maps;
     }
     
 }
