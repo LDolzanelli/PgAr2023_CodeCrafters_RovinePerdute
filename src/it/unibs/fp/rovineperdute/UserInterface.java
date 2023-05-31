@@ -9,22 +9,22 @@ public class UserInterface {
     private static final String WELCOME = "Welcome to Lost ruins!";
     private static final String VIEW_PATHS = "View the shortest paths?";
     private static final String MAP_CHOICE = "What map do you want to choose?";
+    private static final String TEAM_CHOICE = "What team wants to view the shortest path?";
     private static final String[] VISUALIZATION_MENU_VOICES = {"Choose the map to view", "Exit"};
-    private static final String[] MAP_CHOICES = {"Map 1", "Map 2", "Map 3", "Map 4", "Map 5", "Exit"};
+    private static final String[] MAP_CHOICES = {"Map 1", "Map 2", "Map 3", "Map 4", "Map 5", "Map 6", "Exit"};
+    private static final String[] TEAM_CHOICES = {"Team Metztli", "Team Tonatiuh"};
 
 
     public static void mapGenerationUI(Scanner scanner) {
-                do {
+        do {
             System.out.println(PrettyStrings.frame(WELCOME, 30, true, true));
             System.out.println("Generating all the maps");
-
-            //TODO: GENERATE ALL THE MAPS 
             System.out.println("...");
             System.out.println("...");
             System.out.println("Press Enter to Continue");
         } while (!scanner.nextLine().isEmpty());
     }
-    public static void visualizationMenu() {
+    public static void visualizationMenu(Map[] maps) {
         Menu menu = new Menu(VIEW_PATHS, VISUALIZATION_MENU_VOICES, false, true, true);
         int choice;
 
@@ -33,7 +33,7 @@ public class UserInterface {
 
             switch (choice) {
                 case 1:
-                    visualizationSubMenu();
+                    visualizationSubMenu(maps);
                     break;
 
                 case 2:
@@ -42,27 +42,26 @@ public class UserInterface {
         } while(choice != 2);
 
     }
-    public static void visualizationSubMenu() {
+    public static void visualizationSubMenu(Map[] maps) {
         Menu menu = new Menu(MAP_CHOICE, MAP_CHOICES, false, true, true);
         int choice = menu.choose();
+        if(choice != 7) {
+            //choice - 1 to match the index of the chosen map
+            teamChoiceSubMenu(maps, choice - 1);
+        }
+    }
 
-        switch (choice) {
+    public static void teamChoiceSubMenu(Map[] maps, int selectedMap){
+        Menu menu = new Menu(TEAM_CHOICE, TEAM_CHOICES, false, true, true);
+        int choice = menu.choose();
+
+        switch(choice) {
             case 1:
-                //TODO
+                maps[selectedMap].showShortestPathMetztli();
                 break;
+
             case 2:
-                //TODO
-                break;
-            case 3:
-                //TODO
-                break;
-            case 4:
-                //TODO
-                break;
-            case 5:
-                //TODO
-                break;
-            case 6:
+                maps[selectedMap].showShortestPathTonatiuh();
                 break;
         }
     }
