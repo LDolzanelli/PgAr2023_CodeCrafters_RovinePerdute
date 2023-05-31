@@ -6,7 +6,9 @@ public abstract class AdjacencyMatrix {
 
     public AdjacencyMatrix(int size) {
         matrix = new float[size][size];
-    }
+        }
+    
+
 
     public void assignLinksBetweenCities(int idCurrentCity, int idLinkedCity) {
         matrix[idCurrentCity][idLinkedCity] = 1;

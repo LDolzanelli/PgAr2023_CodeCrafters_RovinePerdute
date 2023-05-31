@@ -2,6 +2,7 @@ package it.unibs.fp.rovineperdute;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Stack;
 import java.util.Scanner;
 
 import static it.unibs.fp.rovineperdute.UserInterface.*;
@@ -27,7 +28,7 @@ public class LostRuinsMain {
     }
 
     public static void generateMaps() {
-        
+
         File map1File = new File("inputFiles/PgAr_Map_5.xml");
         File map2File = new File("inputFiles/PgAr_Map_12.xml");
         File map3File = new File("inputFiles/PgAr_Map_50.xml");
@@ -35,43 +36,43 @@ public class LostRuinsMain {
         File map5File = new File("inputFiles/PgAr_Map_2000.xml");
         File map6File = new File("inputFiles/PgAr_Map_10000.xml");
 
-        //map1 = generateMap(map1File, 5);
+        // map1 = generateMap(map1File, 5);
 
-        map2 = generateMap(map2File, 13);
-        /*
+        // map2 = generateMap(map2File, 13);
+
         map3 = generateMap(map3File, 50);
-        map4 = generateMap(map4File, 200);
-        map5 = generateMap(map5File, 2000);
-        map6 = generateMap(map6File, 10000);
-        */
-
-        ArrayList<Integer> pathMap2;
-        pathMap2 = PathAlgorithm.calculatePathTonatiuh(map2);
-
-        for(int i = 0; i < pathMap2.size(); i++) {
-            System.out.println(pathMap2.get(i));
-        }
-
-        
         /*
-        for (int i = 0; i < map1.getMatrixMetztli().getMatrix().length; i++) {
-            for (int j = 0; j < map1.getMatrixMetztli().getMatrix().length; j++) {
-                float matrix[][] = map1.getMatrixMetztli().getMatrix();
-                System.out.printf("%10.2f", matrix[i][j]);
-            }
-            System.out.println();
+         * map4 = generateMap(map4File, 200);
+         * map5 = generateMap(map5File, 2000);
+         */
+        // map6 = generateMap(map6File, 10000);
+
+        Stack<Integer> pathMap2;
+        pathMap2 = PathAlgorithm.calculatePathDijkstraMetztli(map3);
+
+        while (!pathMap2.isEmpty()) {
+            System.out.println(pathMap2.pop());
         }
 
-        System.out.println();
-
-        for (int i = 0; i < map1.getMatrixTonatiuh().getMatrix().length; i++) {
-            for (int j = 0; j < map1.getMatrixTonatiuh().getMatrix().length; j++) {
-                float matrix[][] = map1.getMatrixTonatiuh().getMatrix();
-                System.out.printf("%10.2f", matrix[i][j]);
-            }
-            System.out.println();
-        }
-
+        /*
+         * for (int i = 0; i < map1.getMatrixMetztli().getMatrix().length; i++) {
+         * for (int j = 0; j < map1.getMatrixMetztli().getMatrix().length; j++) {
+         * float matrix[][] = map1.getMatrixMetztli().getMatrix();
+         * System.out.printf("%10.2f", matrix[i][j]);
+         * }
+         * System.out.println();
+         * }
+         * 
+         * System.out.println();
+         * 
+         * for (int i = 0; i < map1.getMatrixTonatiuh().getMatrix().length; i++) {
+         * for (int j = 0; j < map1.getMatrixTonatiuh().getMatrix().length; j++) {
+         * float matrix[][] = map1.getMatrixTonatiuh().getMatrix();
+         * System.out.printf("%10.2f", matrix[i][j]);
+         * }
+         * System.out.println();
+         * }
+         * 
          */
     }
 
