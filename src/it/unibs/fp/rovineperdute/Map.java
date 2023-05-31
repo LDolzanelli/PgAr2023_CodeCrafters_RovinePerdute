@@ -9,6 +9,8 @@ public class Map {
     private MatrixTeamTonatiuh matrixTonatiuh;
     private ArrayList<Integer> shortestPathMetztli;
     private ArrayList<Integer> shortestPathTonatiuh;
+    private float costTonatiuh;
+    private float costMetztli;
 
     public Map(ArrayList<City> cities, float matrixLinks[][]) {
         this.cities = cities;
@@ -38,18 +40,53 @@ public class Map {
         return matrixTonatiuh;
     }
 
+    public ArrayList<Integer> getShortestPathMetztli() {
+        return shortestPathMetztli;
+    }
+
+    public ArrayList<Integer> getShortestPathTonatiuh() {
+        return shortestPathTonatiuh;
+    }
+
     public void showShortestPathMetztli() {
-        for(int i : shortestPathMetztli) {
+        
+        for (int i : shortestPathMetztli) {
             System.out.printf("%d: %s", i, cities.get(i).getName());
             System.out.println();
         }
     }
 
     public void showShortestPathTonatiuh() {
-        for(int i : shortestPathTonatiuh) {
+        for (int i : shortestPathTonatiuh) {
             System.out.printf("%d: %s", i, cities.get(i).getName());
             System.out.println();
         }
-    }    
-    
+    }
+
+    public float getCostMetztli() {
+
+        costMetztli = 0;
+        for (int i : shortestPathMetztli) {
+
+            if (i < shortestPathMetztli.size()) {
+                costMetztli += matrixMetztli.getMatrix()[i][i + 1];
+            }
+        }
+
+        return costMetztli;
+    }
+
+    public float getCostTonatiuh() {
+
+        costTonatiuh = 0;
+        for (int i : shortestPathTonatiuh) {
+
+            if (i < shortestPathTonatiuh.size()) {
+                costTonatiuh += matrixTonatiuh.getMatrix()[i][i + 1];
+            }
+        }
+
+        return costTonatiuh;
+    }
+
 }

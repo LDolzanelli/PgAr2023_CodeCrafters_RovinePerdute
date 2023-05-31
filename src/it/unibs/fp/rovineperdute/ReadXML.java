@@ -8,7 +8,7 @@ import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamReader;
 
-public class ReadWriteXML {
+public class ReadXML {
 
     public static ArrayList<City> readCitiesFile(File file, AdjacencyMatrix matrix) {
         ArrayList<City> cities = new ArrayList<>();
