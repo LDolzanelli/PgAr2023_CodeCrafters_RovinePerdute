@@ -6,6 +6,9 @@ public class MatrixTeamTonatiuh extends AdjacencyMatrix {
         super(size);
     }
 
+/**
+ * The weight is calculated according to the X and Y coordinates, does not consider the change in height
+ */
     @Override
     public float calculateWeight(City cityA, City cityB) {
         double weightX = Math.pow(cityA.getCoordinates().getX() - cityB.getCoordinates().getX(), 2);

@@ -5,6 +5,10 @@ import java.util.ArrayList;
 
 public class MapGenerator {
 
+/**
+ * Generates all the maps reading the XML files, and puts them in an array where they are easily accessible via the index
+ * @return the array of generated maps
+ */
     public static Map[] generateMaps() {
         Map[] maps = new Map[6];
         int[] mapSizes = {5, 13, 50, 200, 2000, 10000};
@@ -25,6 +29,12 @@ public class MapGenerator {
         return maps;
     }
 
+/**
+ * generates the single map from the XML file
+ * @param mapFile the XML file
+ * @param size the amount of maps conatined in the file
+ * @return the Map object
+ */
     public static Map generateMap(File mapFile, int size) {
 
         ArrayList<City> cities = new ArrayList<>();

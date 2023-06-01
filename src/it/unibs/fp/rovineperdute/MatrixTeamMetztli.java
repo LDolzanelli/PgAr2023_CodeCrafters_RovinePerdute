@@ -6,7 +6,9 @@ public class MatrixTeamMetztli extends AdjacencyMatrix {
         super(size);
     }
 
-
+/**
+ * The weight is calculated considering the absolute height difference between the cities
+ */
     @Override
     public float calculateWeight(City cityA, City cityB) {
         return Math.abs(cityA.getCoordinates().getH() - cityB.getCoordinates().getH());

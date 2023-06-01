@@ -6,8 +6,15 @@ import java.util.Arrays;
 
 public class PathAlgorithm {
 
+    //The source of each map is always its first element
     public static final int SOURCE = 0;
 
+/**
+ * Calculates the shortest path between the cities (Dijkstra algorithm)
+ * @param size the size of the loaded Map/matrix
+ * @param matrix the weighted matrix
+ * @return the list of the shortest path found from the matrix
+ */
     public static ArrayList<Integer> findShortestPath(int size, float[][] matrix) {
         float[] distance = new float[size];
         int[] previousCities = new int[size];
@@ -44,6 +51,13 @@ public class PathAlgorithm {
         return shortestPath;
     }
 
+/**
+ * Finds the node with the smallest distance (Dijkstra)
+ * @param distance all the distances loaded in an array
+ * @param visited all the visited cities so far
+ * @param size the size of the map/matrix
+ * @return the minimum distance found
+ */
     private static int findMinDistanceNode(float[] distance, boolean[] visited, int size) {
         float minDistance = Float.MAX_VALUE;
         int minNode = -1;
