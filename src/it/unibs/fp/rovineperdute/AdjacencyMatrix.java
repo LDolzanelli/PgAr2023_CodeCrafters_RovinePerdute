@@ -1,6 +1,7 @@
 package it.unibs.fp.rovineperdute;
 
 import java.util.ArrayList;
+
 public abstract class AdjacencyMatrix {
     private float[][] matrix;
 
@@ -14,6 +15,7 @@ public abstract class AdjacencyMatrix {
  * @param idCurrentCity the city it is reading
  * @param idLinkedCity the links to that city
  */
+
     public void assignLinksBetweenCities(int idCurrentCity, int idLinkedCity) {
         matrix[idCurrentCity][idLinkedCity] = 1;
     }
@@ -22,15 +24,12 @@ public abstract class AdjacencyMatrix {
  * Creates a copy of the matrix, to assign it to the 2 teams (as they have different weighted values)
  * @param matrix the matrix it is copying
  */
-    public void copyLinksBetweenCities(float matrix[][])
-    {
-        for (int i = 0; i < matrix.length; i++)
-        {
-            for (int j = 0; j < matrix.length; j++)
-            {
-                this.matrix[i][j] = matrix[i][j];
-            }
+    public void copyLinksBetweenCities(float matrix[][]) {
+
+        for (int i = 0; i < matrix.length; i++) {
+            System.arraycopy(matrix[i], 0, this.matrix[i], 0, matrix[i].length);
         }
+
     }
 
 /**

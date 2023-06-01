@@ -58,6 +58,8 @@ public class PathAlgorithm {
  * @param size the size of the map/matrix
  * @return the minimum distance found
  */
+    
+
     private static int findMinDistanceNode(float[] distance, boolean[] visited, int size) {
         float minDistance = Float.MAX_VALUE;
         int minNode = -1;
