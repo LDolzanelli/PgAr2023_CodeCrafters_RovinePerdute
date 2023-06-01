@@ -10,6 +10,13 @@ import javax.xml.stream.XMLStreamReader;
 
 public class ReadXML {
 
+    /**
+     * Read the cities from the xml file and save them in an arraylist
+     * @param file the xml file containing the cities
+     * @param matrix the matrix in which will be saved the connections between the cities (1 if they are connected, 0 otherwise)
+     * @return
+     */
+
     public static ArrayList<City> readCitiesFile(File file, AdjacencyMatrix matrix) {
         ArrayList<City> cities = new ArrayList<>();
         XMLInputFactory xmlif = XMLInputFactory.newInstance();
@@ -38,6 +45,7 @@ public class ReadXML {
 
                             case "city":
 
+
                                 name = xmlr.getAttributeValue(null, "name");
 
                                 id = Integer.parseInt(xmlr.getAttributeValue(null, "id"));
@@ -51,6 +59,7 @@ public class ReadXML {
 
                             case "link":
 
+                                // assassination of the connections between the cities (1 if they are connected, 0 otherwise)
                                 int link = Integer.parseInt(xmlr.getAttributeValue(null, "to"));
                                 matrix.assignLinksBetweenCities(id, link);
                                 cities.get(id).getLinkedCitiesID().add(link);
@@ -74,14 +83,14 @@ public class ReadXML {
             }
 
         } catch (Exception e) {
-            System.out.println("Errore durante la lettura del file XML:");
+            System.out.println("Error occurred while processing XML document: ");
             System.out.println(e.getMessage());
         } finally {
             if (xmlr != null) {
                 try {
                     xmlr.close();
                 } catch (Exception e) {
-                    System.out.println("Errore durante la chiusura del reader XML:");
+                    System.out.println("Error occurred while closing the XML document: ");
                     System.out.println(e.getMessage());
                 }
             }

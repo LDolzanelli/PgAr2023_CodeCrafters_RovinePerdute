@@ -24,15 +24,19 @@ public class Map {
         matrixMetztli = new MatrixTeamMetztli(cities.size());
         matrixTonatiuh = new MatrixTeamTonatiuh(cities.size());
 
+        //Copy the links matrix (Initialized while reading the file) into the matrixs of the teams
         matrixMetztli.copyLinksBetweenCities(matrixLinks);
         matrixTonatiuh.copyLinksBetweenCities(matrixLinks);
 
+        //Assign the weights by adding the distance between the cities that have links
         matrixMetztli.assignWeightToLinks(cities);
         matrixTonatiuh.assignWeightToLinks(cities);
 
+        //find the shortest path for each team
         shortestPathMetztli = PathAlgorithm.findShortestPath(cities.size(), matrixMetztli.getMatrix());
         shortestPathTonatiuh = PathAlgorithm.findShortestPath(cities.size(), matrixTonatiuh.getMatrix());
 
+        //calculate the cost of each shortest pathes 
         costMetztli = calcuateCostMetztli();
         costTonatiuh = calculateCostTonatiuh();
     }
@@ -87,6 +91,11 @@ public class Map {
         }
     }
 
+    /**
+     * Calculate the total cost of the Metzli's path by adding the distance between the cities
+     * @return the cost of the Metzli's path
+    */
+
     public float calcuateCostMetztli() {
 
         float costMetztli = 0;
@@ -97,6 +106,11 @@ public class Map {
 
         return costMetztli;
     }
+
+    /**
+     * Calculate the total cost of the Tonatiuh's path by adding the distance between the cities
+     * @return the cost of the Tonatiuh's path
+    */
 
     public float calculateCostTonatiuh() {
 
