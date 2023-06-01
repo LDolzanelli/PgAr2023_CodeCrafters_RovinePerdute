@@ -15,10 +15,12 @@ public class LostRuinsMain {
 
         maps = MapGenerator.generateMaps();
 
+        //write the shortest pathes in xml files for all 6 maps 
         for ( int i = 0; i < maps.length; i++)
         {
             WriteXML.writeShortestPath(maps[i], MAPS_FILE_NAME[i]);
         }
+
 
         Scanner scanner = new Scanner(System.in);
         mapGenerationUI(scanner);

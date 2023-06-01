@@ -8,6 +8,12 @@ import javax.xml.stream.XMLStreamWriter;
 
 public class WriteXML {
 
+    /**
+     * Write tha two pathes (team Tonatiuh and team Metztli) in the XML file 
+     * @param map the map of the lost ruins
+     * @param fileName the name of the file in which is going to be written the path
+     */
+
     public static void writeShortestPath(Map map, String fileName) {
 
         File file = createFile(String.format("outputFiles/%s.xml", fileName));
@@ -41,7 +47,7 @@ public class WriteXML {
                 xmlw.writeStartElement("city");
                 xmlw.writeAttribute("id", String.format("%d", map.getShortestPathTonatiuh().get(i)));
                 xmlw.writeAttribute("name", map.getCities().get(map.getShortestPathTonatiuh().get(i)).getName());
-                xmlw.writeEndElement(); // fine persona
+                xmlw.writeEndElement(); // end city
 
             }
             xmlw.writeEndElement(); // end Tonatiuh route
@@ -76,6 +82,11 @@ public class WriteXML {
 
     }
 
+    /**
+     * Creating a new file with the name of the map if not already existing
+     * @param filePath the path to the file
+     * @return the new file
+     */
     private static File createFile(String filePath) {
         File file = new File(filePath);
 
