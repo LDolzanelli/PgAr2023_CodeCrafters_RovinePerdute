@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <routs>
-    <route team="Tonathiu" cost="0,00" cities="69">
+    <route team="Tonathiu" cost="80029,41" cities="69">
         <city id="0" name="campo base"></city>
         <city id="23" name="Guaia"></city>
         <city id="58" name="Cusco"></city>
@@ -71,7 +71,7 @@
         <city id="1983" name="Qu'umarkaj"></city>
         <city id="1999" name="Rovine Perdute"></city>
     </route>
-    <route team="Metztli" cost="6351,00" cities="74">
+    <route team="Metztli" cost="9639,00" cities="74">
         <city id="0" name="campo base"></city>
         <city id="36" name="Quetzacoatl"></city>
         <city id="67" name="Mixco Vieio"></city>

@@ -49,7 +49,7 @@ public class Map {
     }
 
     public void showShortestPathMetztli() {
-        
+
         for (int i : shortestPathMetztli) {
             System.out.printf("%d: %s", i, cities.get(i).getName());
             System.out.println();
@@ -66,11 +66,9 @@ public class Map {
     public float getCostMetztli() {
 
         costMetztli = 0;
-        for (int i : shortestPathMetztli) {
+        for (int i= 0 ; i< shortestPathMetztli.size() - 1 ; i++) {
 
-            if (i < shortestPathMetztli.size()) {
-                costMetztli += matrixMetztli.getMatrix()[i][i + 1];
-            }
+            costMetztli += matrixMetztli.getMatrix()[shortestPathMetztli.get(i)][shortestPathMetztli.get(i+1)];
         }
 
         return costMetztli;
@@ -79,11 +77,9 @@ public class Map {
     public float getCostTonatiuh() {
 
         costTonatiuh = 0;
-        for (int i : shortestPathTonatiuh) {
+        for (int i= 0 ; i< shortestPathTonatiuh.size() - 1 ; i++) {
 
-            if (i < shortestPathTonatiuh.size()) {
-                costTonatiuh += matrixTonatiuh.getMatrix()[i][i + 1];
-            }
+            costTonatiuh += matrixTonatiuh.getMatrix()[shortestPathTonatiuh.get(i)][shortestPathTonatiuh.get(i+1)];
         }
 
         return costTonatiuh;

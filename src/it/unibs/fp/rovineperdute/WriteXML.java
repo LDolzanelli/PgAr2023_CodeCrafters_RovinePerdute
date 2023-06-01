@@ -19,6 +19,8 @@ public class WriteXML {
 
         try {
 
+            
+
             xmlof = XMLOutputFactory.newInstance();
             xmlw = xmlof.createXMLStreamWriter(new FileOutputStream(file.getAbsolutePath()), "utf-8");
 

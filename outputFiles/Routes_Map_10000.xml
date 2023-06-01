@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <routs>
-    <route team="Tonathiu" cost="10636,67" cities="146">
+    <route team="Tonathiu" cost="110438,28" cities="146">
         <city id="0" name="campo base"></city>
         <city id="48" name="Qu'umarkaj"></city>
         <city id="120" name="Rio"></city>
@@ -148,7 +148,7 @@
         <city id="9962" name="Teotiguacan"></city>
         <city id="9999" name="Rovine Perdute"></city>
     </route>
-    <route team="Metztli" cost="0,00" cities="166">
+    <route team="Metztli" cost="9183,00" cities="166">
         <city id="0" name="campo base"></city>
         <city id="66" name="El Mirador"></city>
         <city id="160" name="Chiva"></city>
