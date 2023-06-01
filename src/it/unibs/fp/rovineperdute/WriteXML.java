@@ -57,7 +57,7 @@ public class WriteXML {
                 xmlw.writeStartElement("city");
                 xmlw.writeAttribute("id", String.format("%d", map.getShortestPathMetztli().get(i)));
                 xmlw.writeAttribute("name", map.getCities().get(map.getShortestPathMetztli().get(i)).getName());
-                xmlw.writeEndElement(); // fine persona
+                xmlw.writeEndElement(); // end city
 
             }
             xmlw.writeEndElement(); // end Metztli route

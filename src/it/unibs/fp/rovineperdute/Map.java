@@ -26,6 +26,9 @@ public class Map {
 
         shortestPathMetztli = PathAlgorithm.findShortestPath(cities.size(), matrixMetztli.getMatrix());
         shortestPathTonatiuh = PathAlgorithm.findShortestPath(cities.size(), matrixTonatiuh.getMatrix());
+
+        costMetztli = calcuateCostMetztli();
+        costTonatiuh = calculateCostTonatiuh();
     }
 
     public ArrayList<City> getCities() {
@@ -48,6 +51,14 @@ public class Map {
         return shortestPathTonatiuh;
     }
 
+    public float getCostMetztli() {
+        return costMetztli;
+    }   
+
+    public float getCostTonatiuh() {
+        return costTonatiuh;
+    }
+
     public void showShortestPathMetztli() {
 
         for (int i : shortestPathMetztli) {
@@ -63,23 +74,23 @@ public class Map {
         }
     }
 
-    public float getCostMetztli() {
+    public float calcuateCostMetztli() {
 
-        costMetztli = 0;
-        for (int i= 0 ; i< shortestPathMetztli.size() - 1 ; i++) {
+        float costMetztli = 0;
+        for (int i = 0; i < shortestPathMetztli.size() - 1; i++) {
 
-            costMetztli += matrixMetztli.getMatrix()[shortestPathMetztli.get(i)][shortestPathMetztli.get(i+1)];
+            costMetztli += matrixMetztli.getMatrix()[shortestPathMetztli.get(i)][shortestPathMetztli.get(i + 1)];
         }
 
         return costMetztli;
     }
 
-    public float getCostTonatiuh() {
+    public float calculateCostTonatiuh() {
 
-        costTonatiuh = 0;
-        for (int i= 0 ; i< shortestPathTonatiuh.size() - 1 ; i++) {
+        float costTonatiuh = 0;
+        for (int i = 0; i < shortestPathTonatiuh.size() - 1; i++) {
 
-            costTonatiuh += matrixTonatiuh.getMatrix()[shortestPathTonatiuh.get(i)][shortestPathTonatiuh.get(i+1)];
+            costTonatiuh += matrixTonatiuh.getMatrix()[shortestPathTonatiuh.get(i)][shortestPathTonatiuh.get(i + 1)];
         }
 
         return costTonatiuh;
